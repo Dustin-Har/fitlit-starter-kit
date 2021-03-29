@@ -3,14 +3,76 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <script type="text/javascript" src="../data/users.js" defer></script>
+    <script type="text/javascript" src="../data/hydration.js" defer></script>
+    <script type="text/javascript" src="../data/sleep.js" defer></script>
+    <script type="text/javascript" src="../data/activity.js" defer></script>
+    <script type="text/javascript" src="./scripts.js" defer></script>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
+    <header class="header" id="header">
+      <p id="userName">username</p>
+      <ul class="user-info" id="userInfo">
+        <li>name</li>
+        <li>address</li>
+        <li>email</li>
+        <li>stride length</li>
+      </ul>
+    </header>
+    <section class="cardio-box" id="cardioBox">
+      <span class="cardio-header" id="cardioHeader">
+        <h2>CARDIO</h2>
+        <p>Step goal: 8,000 steps</p>
+      </span>
+      <section class="cardio-graphs" id="cardio-graphs">
+        <section class="stairs-graph" id="stairsGraph">
+          <canvas class="stairs-donut" id="stairsDonut" role="img"></canvas>
+          <section class="stairs-info" id="stairs-info">
+            <section class="stairs-flights" id="stairsFlights">
+              <p># of flights</p>
+            </section>
+            <section class="stairs-minutes" id="stairsMinutes">
+              <p># of active miutes</p>
+            </section>
+          </section>
+        </section> 
+        <section class="steps-graph" id="stepsGraph">
+          <canvas class="steps-donut" id="stepsDonut" role="img"></canvas>
+          <section class="step-info" id="stepInfo">
+            <section class="steps" id="steps">
+              <p># of steps</p>
+            </section>
+            <section class="miles-walked" id="milesMalked">
+              <p># miles</p>
+            </section>
+          </section>
+        </section>
+      </section>
+      <section class="steps-weekly" id="stepsWeekly">
+        <canvas class="steps-bar" id="stepsBar" role="img"></canvas>
+      </section>
+    </section>
+    <section class="water-box" id="waterBox">
+      <section class="water-graphs" id="waterGraph">
+        <canvas class="water-donut" id="waterDonut" role="img"></canvas>
+        <section></section>
+      </section>
+      <section class="water-weekly" id="waterWeekly">
+        <canvas class="water-bar" id="waterBar" role="img"></canvas>
+      </section>
+    </section>
+    <section class="sleep-box" id="sleepBox">
+      <section class="sleep-graphs" id="sleepGraphs">
+        <section class="sleep-graph" id="sleepGraph">
+          <canvas class="sleep-donut" id="sleepDonut" role="img"></canvas>
+        </section>
+        <section class="sleep-info" id="sleepInfo">
+          
+        </section>
+      </section>
+      <section class="sleep-weekly" id="sleepWeekly">
+        <canvas class="sleep-bar" id="sleepBar" role="img"></canvas>
+      </section>
+    </section>
   </body>
 </html>
