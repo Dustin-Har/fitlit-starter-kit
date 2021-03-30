@@ -7,6 +7,11 @@ const userStride = document.getElementById('userStride');
 let userRepository = new UserRepository(userData);
 let user = new User(userRepository.returnUser(4));
 changeUserInformation();
+displayStep();
+
+function displayStep() {
+    console.log(`${userRepository.averageStepGoal()} average step goal amongst user Your Goal ${user.dailyStepGoal}`);
+}
 
 function changeUserInformation() {
     userDisplayName.innerText = user.firstName();
