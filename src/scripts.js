@@ -1,3 +1,6 @@
+const UserRepository = require('./UserRepository');
+const User = require('./User');
+
 const userDisplayName = document.getElementById('userDisplayName');
 const userName = document.getElementById('userName');
 const userAddress = document.getElementById('userAddress');
@@ -6,9 +9,12 @@ const userStride = document.getElementById('userStride');
 
 let userRepository = new UserRepository(userData);
 let user = new User(userRepository.returnUser(4));
+changeUserInformation();
 
-userDisplayName.innerText = user.firstName();
-userName.innerText = user.name;
-userAddress.innerText = user.address;
-userEmail.innerText = user.email;
-userStride.innerText = user.strideLength;
+function changeUserInformation() {
+    userDisplayName.innerText = user.firstName();
+    userName.innerText = user.name;
+    userAddress.innerText = user.address;
+    userEmail.innerText = user.email;
+    userStride.innerText = user.strideLength;
+}
