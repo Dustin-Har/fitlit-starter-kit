@@ -1,6 +1,3 @@
-const UserRepository = require('./UserRepository');
-const User = require('./User');
-
 const userDisplayName = document.getElementById('userDisplayName');
 const userName = document.getElementById('userName');
 const userAddress = document.getElementById('userAddress');
