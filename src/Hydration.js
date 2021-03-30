@@ -1,5 +1,19 @@
 class Hydration {
+    constructor(data) {
+        this.data = data;
+    }
 
+    averageOunces(id) {
+        let days = 0;
+        let sum = this.data.reduce((acc, data) => {
+            if(data.userID === id) {
+                days += 1
+                return acc + data.numOunces;
+            }
+            return acc;
+        }, 0);
+        return sum/days;
+    }
 }
 
 module.exports = Hydration;
