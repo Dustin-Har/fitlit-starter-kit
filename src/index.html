@@ -7,16 +7,17 @@
     <script type="text/javascript" src="../data/hydration.js" defer></script>
     <script type="text/javascript" src="../data/sleep.js" defer></script>
     <script type="text/javascript" src="../data/activity.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0" defer></script>
     <script type="text/javascript" src="./scripts.js" defer></script>
   </head>
   <body>
     <header class="header" id="header">
-      <p id="userName">username</p>
+      <p id="userDisplayName">username</p>
       <ul class="user-info" id="userInfo">
-        <li>name</li>
-        <li>address</li>
-        <li>email</li>
-        <li>stride length</li>
+        <li id="userName">name</li>
+        <li id="userAddress">address</li>
+        <li id="userEmail">email</li>
+        <li id="userStride">stride length</li>
       </ul>
     </header>
     <section class="cardio-box" id="cardioBox">
@@ -53,21 +54,39 @@
       </section>
     </section>
     <section class="water-box" id="waterBox">
+      <span class="water-header" id="waterHeader">
+        <h2>HYDRATION</h2>
+        <p>Drinking goal: 3 Liters</p>
+      </span>
       <section class="water-graphs" id="waterGraph">
         <canvas class="water-donut" id="waterDonut" role="img"></canvas>
-        <section></section>
+        <section class="water-info" id="waterInfo">
+          <p># of ounces drinked</p>
+        </section>
       </section>
       <section class="water-weekly" id="waterWeekly">
         <canvas class="water-bar" id="waterBar" role="img"></canvas>
       </section>
     </section>
     <section class="sleep-box" id="sleepBox">
+      <span class="cardio-header" id="cardioHeader">
+        <h2>SLEEP</h2>
+        <p>Sleep goal: 8 hours</p>
+      </span>
       <section class="sleep-graphs" id="sleepGraphs">
         <section class="sleep-graph" id="sleepGraph">
           <canvas class="sleep-donut" id="sleepDonut" role="img"></canvas>
+          <section class="daily-slept" id="dailySlept">
+            <p># of hours slept</p>
+          </section>
         </section>
         <section class="sleep-info" id="sleepInfo">
-          
+          <section class="quality-night" id="qualityNight">
+            <p>rank of sleep that night</p>
+          </section>
+          <section class="quality-average" id="qualityAverage">
+            <p>average quality of sleep</p>
+          </section>
         </section>
       </section>
       <section class="sleep-weekly" id="sleepWeekly">
