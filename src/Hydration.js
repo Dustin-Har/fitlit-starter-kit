@@ -1,3 +1,5 @@
+const dayjs = require("dayjs");
+
 class Hydration {
     constructor(data) {
         this.data = data;
@@ -23,6 +25,20 @@ class Hydration {
             } 
         });
         return waterDrank;
+    }
+
+    weekConsumption(id, startingDate) {
+        let d = new Date(startingDate);
+        let weekArray = [d];
+        //d.setDate(d.getDate()-1);
+        let weekFluids = [];
+        this.data.forEach((data) => {
+                const dayFormat = new Date(data.date);
+                if(data.userID === id && weekArray.some((day => day.getTime() === dayFormat.getTime()))) {
+                    weekFluids.unshift(data.numOunces);
+                }
+            });
+        return weekFluids;
     }
 }
 
