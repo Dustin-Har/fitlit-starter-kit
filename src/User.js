@@ -12,6 +12,17 @@ class User {
     firstName() {
         return this.name.substr(0, this.name.indexOf(' '));
     }
+
+    setWeek(startingDate) {
+        let week = []
+        let d = new Date(startingDate);
+        week.unshift(d.toISOString());
+        for(let i = 1; i < 7; i++) {
+            d.setDate(d.getDate()-1);
+            week.unshift(d.toISOString());
+        }
+        return week;
+    }
 }
 
 if (typeof module !== 'undefined') {

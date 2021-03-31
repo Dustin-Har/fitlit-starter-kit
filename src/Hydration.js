@@ -27,16 +27,15 @@ class Hydration {
         return waterDrank;
     }
 
-    weekConsumption(id, startingDate) {
-        let d = new Date(startingDate);
-        let weekArray = [d];
-        //d.setDate(d.getDate()-1);
+    weekConsumption(user, startingDate) {
+        let weekArray = user.setWeek(startingDate);
         let weekFluids = [];
         this.data.forEach((data) => {
-                const dayFormat = new Date(data.date);
-                if(data.userID === id && weekArray.some((day => day.getTime() === dayFormat.getTime()))) {
-                    weekFluids.unshift(data.numOunces);
-                }
+            const dayFormat = new Date(data.date);
+            const dateMatch = weekArray.some((day => day === dayFormat.toISOString()));
+            if(data.userID === user.id && dateMatch) {
+                weekFluids.push(data.numOunces);
+            }
             });
         return weekFluids;
     }

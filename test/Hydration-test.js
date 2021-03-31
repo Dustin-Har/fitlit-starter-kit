@@ -99,7 +99,7 @@ describe('Hydration', function() {
     it('should return 0 if the date is not found', function() {
         expect(hydration.waterDayConsumed(user.id, "2020/06/16")).to.equal(0);
     });
-    it('should return the an array of water drank over a 7 day period returning each day to the array', function() {
-        expect(hydration.weekConsumption(user.id, '2019/06/21')).to.eql([37, 69, 45, 90, 66, 100, 45]);
+    it('should return the an array of water drank over a 7 da   y period returning each day to the array', function() {
+        expect(hydration.weekConsumption(user, '2019/06/21')).to.eql([37, 69, 45, 90, 66, 100, 45]);
     });
 });
