@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Activity Tracker</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
     <script type="text/javascript" src="../data/users.js" defer></script>
     <script type="text/javascript" src="../data/hydration.js" defer></script>
     <script type="text/javascript" src="../data/sleep.js" defer></script>
@@ -13,9 +14,14 @@
     <script type="text/javascript" src="./scripts.js" defer></script>
   </head>
   <body>
+    <section class="color-section">
+      <div class="top-right"></div>
+      <div class="bottom-left"></div>
+      <div class="bottom-right"></div>
+    </section>
     <header class="header" id="header">
       <p id="userDisplayName">username</p>
-      <ul class="user-info" id="userInfo">
+      <ul class="user-info" id="userInfo" hidden>
         <li id="userName">name</li>
         <li id="userAddress">address</li>
         <li id="userEmail">email</li>
