@@ -1,0 +1,93 @@
+/*
+main background color #15171C;
+side back ground: #424549 (hsl(214, 5%, 27%)), (top right);
+                #26363A (hsl(192, 21%, 19%)) (bottom left);
+                #26363A ( )(bottom right)
+
+*/
+
+body {
+    background-color: hsl(223, 14%, 10%);
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.color-section {
+    /* border: 2px white solid; */
+    margin: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.color-section div {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.4;
+}
+
+.top-right {
+    background-color: #424549;
+    width: 35%;
+    height: 20%;
+    top: -7%;
+    right: -10%;
+}
+
+.bottom-left {
+    width: 70%;
+    height: 50%;
+    background-color: #1c4d4d;
+    bottom: -35%;
+    left: -10%;
+}
+
+.bottom-right {
+    width: 60%;
+    height: 35%;
+    background-color: #424549;
+    right: -40%;
+    bottom: 15%;
+}
+
+.header {
+    border: 1px black solid;
+    position: fixed;
+    width: 100%;
+    height: 4em;
+    font-size: 2rem;
+    color:  hsl(223, 14%, 60%);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cardio-box {
+    height: 100%;
+    width: 32%;
+    border: 2px white solid;
+    color: hsl(223, 14%, 60%);
+    padding-top: 8em;
+}
+
+@media only screen and (max-width: 800px) { 
+    .cardio-box {
+        height: 89em;
+        width: 99%;
+    }
+} 
+
+.cardio-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
