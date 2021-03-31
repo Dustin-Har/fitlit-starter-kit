@@ -9,6 +9,8 @@ side back ground: #424549 (hsl(214, 5%, 27%)), (top right);
 body {
     background-color: hsl(223, 14%, 10%);
     margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .color-section {
@@ -28,6 +30,7 @@ body {
     position: absolute;
     border-radius: 50%;
     filter: blur(50px);
+    opacity: 0.4;
 }
 
 .top-right {
@@ -55,7 +58,7 @@ body {
 }
 
 .header {
-    border: 2px white solid;
+    border: 1px black solid;
     position: fixed;
     width: 100%;
     height: 4em;
@@ -67,16 +70,20 @@ body {
     align-items: center;
 }
 
-/* @media screen and (min-width: 550px) {
-
-} */
-
 .cardio-box {
-    border: 2px white solid;
     height: 100%;
-    padding-top: ;
+    width: 32%;
+    border: 2px white solid;
     color: hsl(223, 14%, 60%);
+    padding-top: 8em;
 }
+
+@media only screen and (max-width: 800px) { 
+    .cardio-box {
+        height: 89em;
+        width: 99%;
+    }
+} 
 
 .cardio-header {
     display: flex;
