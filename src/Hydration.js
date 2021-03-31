@@ -12,7 +12,17 @@ class Hydration {
             }
             return acc;
         }, 0);
-        return sum/days;
+        return Math.floor(sum/days) ;
+    }
+
+    waterDayConsumed(id, date) {
+        let waterDrank = 0;
+        this.data.forEach(data => {
+            if(data.userID === id && data.date === date){
+                waterDrank =  data.numOunces;
+            } 
+        });
+        return waterDrank;
     }
 }
 
