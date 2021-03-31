@@ -1,5 +1,3 @@
-const dayjs = require("dayjs");
-
 class Hydration {
     constructor(data) {
         this.data = data;
@@ -40,5 +38,6 @@ class Hydration {
         return weekFluids;
     }
 }
-
-module.exports = Hydration;
+if (typeof module !== 'undefined') {
+    module.exports = Hydration;
+}
