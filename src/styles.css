@@ -9,16 +9,16 @@ side back ground: #424549 (hsl(214, 5%, 27%)), (top right);
 body {
     background-color: hsl(223, 14%, 10%);
     margin: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 }
 
 .color-section {
     /* border: 2px white solid; */
     margin: 0;
     position: fixed;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     left: 0;
     right: 0;
     top: 0;
@@ -60,7 +60,7 @@ body {
 .header {
     border: 1px black solid;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     height: 4em;
     font-size: 2rem;
     color:  hsl(223, 14%, 60%);
@@ -71,21 +71,75 @@ body {
 }
 
 .cardio-box {
-    height: 100%;
-    width: 32%;
+    height: 100vh;
+    width: 32vw;
     border: 2px white solid;
     color: hsl(223, 14%, 60%);
     padding-top: 8em;
+    display: flex;
+    flex-direction: column;
 }
 
 @media only screen and (max-width: 800px) { 
     .cardio-box {
-        height: 89em;
-        width: 99%;
+        width: 100vw;
+        height: 100vh;
     }
 } 
 
 .cardio-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardio-graphs {
+    width: 100vw;
+    border: 2px teal solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.stairs-graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%
+}
+
+.stairs-donut {
+    width: 50%;
+    height: 50%;
+}
+
+
+.stairs-info {
+    width: 100%;
+    border: 2px red solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.steps-graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%
+}
+
+.steps-donut {
+    width: 50%;
+    height: 50%;
+}
+
+.step-info {
+    width: 100%;
+    border: 2px red solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
