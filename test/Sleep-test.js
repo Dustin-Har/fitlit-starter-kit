@@ -111,4 +111,11 @@ describe('Sleep', function() {
     it('should return the average number of hours slept per day for a user', function() {
         expect(sleep.averageSleep(user.id)).to.equal(7.4);
     });
+    it('should return the averge sleep quality for a specified user over all time', function() {
+        expect(sleep.averageQuality(user.id)).to.equal(3.3);
+    });
+    it('should return the hours slept for a user on a data specified', function() {
+        expect(sleep.hourSleptDay(user.id, "2019/06/13")).to.equal(4.7);
+        expect(sleep.hourSleptDay(1, "2019/06/15")).to.equal(6.1);
+    });
 });
