@@ -84,12 +84,6 @@ describe('Sleep', function() {
             "date": "2019/06/14",
             "hoursSlept": 4.5,
             "sleepQuality": 1.2
-          },
-          {
-            "userID": 2,
-            "date": "2019/06/15",
-            "hoursSlept": 4.6,
-            "sleepQuality": 1.7
           }];
     const userData = {
         "id": 2,
@@ -106,9 +100,15 @@ describe('Sleep', function() {
     }
     beforeEach(function() {
         user = new User(userData);
-        sleep = new Sleep(sleep);
+        sleep = new Sleep(sleepData);
     });
     it('Should be a function', function() {
         expect(Sleep).to.be.a('function');
+    });
+    it('should take in data about users sleep', function() {
+        expect(sleep.data).to.eql(sleepData);
+    });
+    it('should return the average number of hours slept per day for a user', function() {
+        expect(sleep.averageSleep(user.id)).to.equal(7.4);
     });
 });
