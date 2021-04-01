@@ -47,16 +47,21 @@ class Sleep {
         return sleepQuality;
     }
 
-    weekSleepHours(user, startingDate) {
+    findWeek(user, startingDate) {
         let weekArray = user.setWeek(startingDate);
-        let weekSleep = [];
-        this.data.forEach((data) => {
+        let weekSleep = this.data.filter((data) => {
             const dayFormat = new Date(data.date);
             const dateMatch = weekArray.some((day => day === dayFormat.toISOString()));
             if(data.userID === user.id && dateMatch) {
-                weekSleep.push(data.hoursSlept);
+                return true;
             }
-            });
+        });
+        return weekSleep;
+    }
+
+    weekSleepHours(user, startingDate) {
+        let weekSleep = this.findWeek(user, startingDate);
+        weekSleep = weekSleep.map(data => data.hoursSlept);
         return weekSleep;
     }
 }
