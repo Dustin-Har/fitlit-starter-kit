@@ -118,4 +118,11 @@ describe('Sleep', function() {
         expect(sleep.hourSleptDay(user.id, "2019/06/13")).to.equal(4.7);
         expect(sleep.hourSleptDay(1, "2019/06/15")).to.equal(6.1);
     });
+    it('should return the sleep quality for a user on a data specified', function() {
+        expect(sleep.sleepQualityDay(user.id, "2019/06/13")).to.equal(4.5);
+        expect(sleep.sleepQualityDay(1, "2019/06/15")).to.equal(2.2);
+    });
+    it('should return how much a user slept over each day of a given week', function() {
+        expect(sleep.weekSleepHours(user, "2019/06/14")).to.eql([7, 7.5, 7.3, 9.9, 10.6, 4.7, 4.5]);
+    });
 });

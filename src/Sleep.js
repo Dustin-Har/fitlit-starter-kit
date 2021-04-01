@@ -36,6 +36,29 @@ class Sleep {
         });
         return hoursSlept;
     }
+
+    sleepQualityDay(id, date) {
+        let sleepQuality = 0;
+        this.data.forEach(data => {
+            if(data.userID === id && data.date === date){
+                sleepQuality =  data.sleepQuality;
+            } 
+        });
+        return sleepQuality;
+    }
+
+    weekSleepHours(user, startingDate) {
+        let weekArray = user.setWeek(startingDate);
+        let weekSleep = [];
+        this.data.forEach((data) => {
+            const dayFormat = new Date(data.date);
+            const dateMatch = weekArray.some((day => day === dayFormat.toISOString()));
+            if(data.userID === user.id && dateMatch) {
+                weekSleep.push(data.hoursSlept);
+            }
+            });
+        return weekSleep;
+    }
 }
 
 if (typeof module !== 'undefined') {
