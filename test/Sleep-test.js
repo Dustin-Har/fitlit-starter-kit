@@ -8,85 +8,6 @@ const DataSleep = require('./Sleep-Data-Test');
 describe('Sleep', function() {
     let user, sleep;
     const sleepData = DataSleep;
-    // const sleepData = [
-    //     {
-    //       "userID": 1,
-    //       "date": "2019/06/15",
-    //       "hoursSlept": 6.1,
-    //       "sleepQuality": 2.2
-    //     },
-    //     {
-    //       "userID": 2,
-    //       "date": "2019/06/08",
-    //       "hoursSlept": 7,
-    //       "sleepQuality": 4.7
-    //     },
-    //     {
-    //       "userID": 3,
-    //       "date": "2019/06/15",
-    //       "hoursSlept": 10.8,
-    //       "sleepQuality": 4.7
-    //     },
-    //     {
-    //       "userID": 4,
-    //       "date": "2019/06/15",
-    //       "hoursSlept": 5.4,
-    //       "sleepQuality": 3
-    //     },
-    //     {
-    //         "userID": 1,
-    //         "date": "2019/06/16",
-    //         "hoursSlept": 4.1,
-    //         "sleepQuality": 3.8
-    //       },
-    //       {
-    //         "userID": 2,
-    //         "date": "2019/06/09",
-    //         "hoursSlept": 7.5,
-    //         "sleepQuality": 3.8
-    //       },
-    //       {
-    //         "userID": 3,
-    //         "date": "2019/06/16",
-    //         "hoursSlept": 10.7,
-    //         "sleepQuality": 3.4
-    //       },
-    //       {
-    //         "userID": 4,
-    //         "date": "2019/06/16",
-    //         "hoursSlept": 8.3,
-    //         "sleepQuality": 4.5
-    //       },
-    //       {
-    //         "userID": 2,
-    //         "date": "2019/06/10",
-    //         "hoursSlept": 7.3,
-    //         "sleepQuality": 4.3
-    //       },
-    //       {
-    //         "userID": 2,
-    //         "date": "2019/06/11",
-    //         "hoursSlept": 9.9,
-    //         "sleepQuality": 3
-    //       },
-    //       {
-    //         "userID": 2,
-    //         "date": "2019/06/12",
-    //         "hoursSlept": 10.6,
-    //         "sleepQuality": 1.4
-    //       },
-    //       {
-    //         "userID": 2,
-    //         "date": "2019/06/13",
-    //         "hoursSlept": 4.7,
-    //         "sleepQuality": 4.5
-    //       },
-    //       {
-    //         "userID": 2,
-    //         "date": "2019/06/14",
-    //         "hoursSlept": 4.5,
-    //         "sleepQuality": 1.2
-    //       }];
     const userData = {
         "id": 2,
         "name": "Luisa Hane",
@@ -133,7 +54,11 @@ describe('Sleep', function() {
     it('should return the average sleep quality for all users', function() {
         expect(sleep.allUserSleep()).to.equal(3);
     });
-    it('should Find all users who average a sleep quality greater than 3 for a given week', function () {
+    it.skip('should Find all users who average a sleep quality greater than 3 for a given week', function () {
         expect(sleep.usersGoodSleep(user, "2019/06/21")).to.eql([])
+    });
+    it('should For a given day identified by the date, find the users who slept the most number of hours one or more if they tied', function() {
+        expect(sleep.userMostSleep("2019/06/21")).to.eql([4, 5]);
+        expect(sleep.userMostSleep("2019/06/20")).to.eql([2]);
     });
 });

@@ -161,7 +161,14 @@ const sleepData = [
         "date": "2019/06/21",
         "hoursSlept": 10.6,
         "sleepQuality": 2.7
+      },       
+      {
+        "userID": 5,
+        "date": "2019/06/21",
+        "hoursSlept": 10.6,
+        "sleepQuality": 2.7
       }
+    
 ];
 
 module.exports = sleepData;
