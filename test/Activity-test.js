@@ -9,18 +9,19 @@ describe('Activity', function() {
     let user, activity;
     const activityData = DataActivity;
     const userData = {
-        "id": 2,
-        "name": "Luisa Hane",
-        "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-        "email": "Diana.Hayes1@hotmail.com",
-        "strideLength": 4.3,
-        "dailyStepGoal": 10000,
-        "friends": [
-        16,
-        4,
-        8
-        ]
-    }
+          "id": 2,
+          "name": "Jarvis Considine",
+          "address": "30086 Kathryn Port, Ciceroland NE 07273",
+          "email": "Dimitri.Bechtelar11@gmail.com",
+          "strideLength": 4.5,
+          "dailyStepGoal": 5000,
+          "friends": [
+            9,
+            18,
+            24,
+            19
+          ]
+        };
     beforeEach(function() {
         user = new User(userData);
         activity = new Activity(activityData);
@@ -32,6 +33,18 @@ describe('Activity', function() {
         expect(activity.data).to.eql(activityData);
     });
     it('should return the steps walked by a user on specified day', function() {
-        expect(activity.stepsDay(user.id, "2019/06/21"))
+        expect(activity.dayInformation(user.id, "2019/06/21", 'numSteps')).to.equal(10225);
+    });
+    it('should return the number of flights of stair a user has taken in a given day', function() {
+        expect(activity.dayInformation(user.id, "2019/06/21", 'flightsOfStairs')).to.equal(26);
+    });
+    it('should return the number of minutes active for a user on a specific day', function() {
+        expect(activity.dayInformation(user.id, "2019/06/21", "minutesActive")).to.equal(174);
+    });
+    it('should for a specific day return the number of miles a user has walked', function() {
+        expect(activity.milesWalked(user, "2019/06/21")).to.equal(8.7);
+    }); 
+    it('should return the average number of minutes active a user was over a given week', function() {
+        expect(activity.averageWeekActive(user, "2019/06/21")).to.equal(156.4);
     });
 });
