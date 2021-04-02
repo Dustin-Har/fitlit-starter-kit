@@ -87,6 +87,23 @@ body {
     align-content: center;
 }
 
+.stairs-flights,
+.stairs-minutes,
+.steps,
+.miles-walked,
+.water-info,
+.daily-slept,
+.rank-night,
+.rank-average {
+    background: linear-gradient(.25turn, #4259C3, #7B9FF2);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2em;
+    margin: 0;
+}
+
 /*~~~~~~~~~ CARDIO ~~~~~~~~~*/
 
 .cardio-header {
@@ -160,7 +177,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 20%;
+    height: 30%;
 }
 
 .water-bar {
@@ -179,14 +196,11 @@ body {
     z-index: -10;
 }
 
-
 .water-bar-daily {
     display: flex;
     position: absolute;
     bottom: -13.5%;
 }
-
-
 
 .milk-container {
     display: flex;
@@ -218,10 +232,33 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 20%;
+    height: 30%;
 }
 
+.sleep-graphs {
+    display: flex;
+}
 
+.sleep-graph,
+.sleep-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.quality-night,
+.quality-average {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.rank-night,
+.rank-average {
+    color: lightblue;
+}
 /*~~~~~~~~~ For Desktop ~~~~~~~~~*/
 
 @media only screen and (min-width: 800px) { 
