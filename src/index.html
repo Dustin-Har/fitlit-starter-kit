@@ -30,77 +30,86 @@
         <li id="userStride">stride length</li>
       </ul>
     </header>
-    <section class="cardio-box" id="cardioBox">
-      <span class="cardio-header" id="cardioHeader">
-        <h2>CARDIO</h2>
-        <p>Step goal: 8,000 steps</p>
-      </span>
-      <section class="cardio-graphs" id="cardio-graphs">
-        <section class="stairs-graph" id="stairsGraph">
-          <canvas class="stairs-donut" id="stairsDonut" role="img"></canvas>
-          <section class="stairs-info" id="stairs-info">
-            <section class="stairs-flights" id="stairsFlights">
-              <p># of flights</p>
+    <section class="info-section">
+      <section class="cardio-box" id="cardioBox">
+        <span class="cardio-header" id="cardioHeader">
+          <h2>CARDIO</h2>
+          <p>Step goal: 8,000 steps</p>
+        </span>
+        <section class="cardio-graphs" id="cardioGraphs">
+          <section class="stairs-graph" id="stairsGraph">
+            <canvas class="stairs-donut" id="stairsDonut" role="img"></canvas>
+            <section class="stairs-info" id="stairsInfo">
+              <section class="stairs-flights" id="stairsFlights">
+                <p># of flights</p>
+              </section>
+              <section class="stairs-minutes" id="stairsMinutes">
+                <p># of active miutes</p>
+              </section>
             </section>
-            <section class="stairs-minutes" id="stairsMinutes">
-              <p># of active miutes</p>
-            </section>
-          </section>
-        </section> 
-        <section class="steps-graph" id="stepsGraph">
-          <canvas class="steps-donut" id="stepsDonut" role="img"></canvas>
-          <section class="step-info" id="stepInfo">
-            <section class="steps" id="steps">
-              <p># of steps</p>
-            </section>
-            <section class="miles-walked" id="milesMalked">
-              <p># miles</p>
+          </section> 
+          <section class="steps-graph" id="stepsGraph">
+            <canvas class="steps-donut" id="stepsDonut" role="img"></canvas>
+            <section class="step-info" id="stepInfo">
+              <section class="steps" id="steps">
+                <p># of steps</p>
+              </section>
+              <section class="miles-walked" id="milesMalked">
+                <p># miles</p>
+              </section>
             </section>
           </section>
         </section>
-      </section>
-      <section class="steps-weekly" id="stepsWeekly">
-        <canvas class="steps-bar" id="stepsBar" role="img"></canvas>
-      </section>
-    </section>
-    <section class="water-box" id="waterBox">
-      <span class="water-header" id="waterHeader">
-        <h2>HYDRATION</h2>
-        <p>Drinking goal: 3 Liters</p>
-      </span>
-      <section class="water-graphs" id="waterGraph">
-        <canvas class="water-bar-daily" id="waterBarDaily" role="img"></canvas>
-        <section class="water-info" id="waterInfo">
-          <p># of ounces drinked</p>
+        <section class="steps-weekly" id="stepsWeekly">
+          <canvas class="steps-bar" id="stepsBar" role="img"></canvas>
         </section>
       </section>
-      <section class="water-weekly" id="waterWeekly">
-        <canvas class="water-bar" id="waterBarWeekly" role="img"></canvas>
-      </section>
-    </section>
-    <section class="sleep-box" id="sleepBox">
-      <span class="cardio-header" id="cardioHeader">
-        <h2>SLEEP</h2>
-        <p>Sleep goal: 8 hours</p>
-      </span>
-      <section class="sleep-graphs" id="sleepGraphs">
-        <section class="sleep-graph" id="sleepGraph">
-          <canvas class="sleep-donut" id="sleepDonut" role="img"></canvas>
-          <section class="daily-slept" id="dailySlept">
-            <p># of hours slept</p>
+      <section class="water-box" id="waterBox">
+        <span class="water-header" id="waterHeader">
+          <h2>HYDRATION</h2>
+          <p>Drinking goal: 3 Liters</p>
+        </span>
+        <section class="water-graphs" id="waterGraph">
+            <section class="water-bar">
+              <div class="milk-container">
+                <img src="../assets/MilkJug.png" alt="milk container silhouette">
+              </div>
+              <section class="water-chart">
+                <canvas class="water-bar-daily" id="waterBarDaily" role="img"></canvas>
+              </section>
+            </section>
+          <section class="water-info" id="waterInfo">
+            <p># of ounces drinked</p>
           </section>
         </section>
-        <section class="sleep-info" id="sleepInfo">
-          <section class="quality-night" id="qualityNight">
-            <p>rank of sleep that night</p>
-          </section>
-          <section class="quality-average" id="qualityAverage">
-            <p>average quality of sleep</p>
-          </section>
+        <section class="water-weekly" id="waterWeekly">
+          <canvas class="water-bar-weekly" id="waterBarWeekly" role="img"></canvas>
         </section>
       </section>
-      <section class="sleep-weekly" id="sleepWeekly">
-        <canvas class="sleep-bar" id="sleepBar" role="img"></canvas>
+      <section class="sleep-box" id="sleepBox">
+        <span class="cardio-header" id="cardioHeader">
+          <h2>SLEEP</h2>
+          <p>Sleep goal: 8 hours</p>
+        </span>
+        <section class="sleep-graphs" id="sleepGraphs">
+          <section class="sleep-graph" id="sleepGraph">
+            <canvas class="sleep-donut" id="sleepDonut" role="img"></canvas>
+            <section class="daily-slept" id="dailySlept">
+              <p># of hours slept</p>
+            </section>
+          </section>
+          <section class="sleep-info" id="sleepInfo">
+            <section class="quality-night" id="qualityNight">
+              <p>rank of sleep that night</p>
+            </section>
+            <section class="quality-average" id="qualityAverage">
+              <p>average quality of sleep</p>
+            </section>
+          </section>
+        </section>
+        <section class="sleep-weekly" id="sleepWeekly">
+          <canvas class="sleep-bar" id="sleepBar" role="img"></canvas>
+        </section>
       </section>
     </section>
   </body>
