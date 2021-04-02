@@ -39,6 +39,11 @@ class Activity {
         });
         return week;
     }
+
+    passStepGoal(user, date) {
+        let stepsTaken = this.dayInformation(user.id, date, 'numSteps');
+        return stepsTaken >= user.dailyStepGoal;
+    }
 }
 
 if (typeof module !== 'undefined') {

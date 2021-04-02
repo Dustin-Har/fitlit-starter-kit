@@ -47,4 +47,8 @@ describe('Activity', function() {
     it('should return the average number of minutes active a user was over a given week', function() {
         expect(activity.averageWeekActive(user, "2019/06/21")).to.equal(156.4);
     });
+    it('should return if a user passed their step goal for a given day', function() {
+        expect(activity.passStepGoal(user, "2019/06/21")).to.equal(true);
+        expect(activity.passStepGoal(user, "2019/06/18")).to.equal(false);
+    })
 });
