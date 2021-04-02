@@ -16,12 +16,14 @@ class Hydration {
     }
 
     waterDayConsumed(id, date) {
-        let waterDrank = 0;
-        this.data.forEach(data => {
-            if(data.userID === id && data.date === date){
-                waterDrank =  data.numOunces;
-            } 
+        let waterDrank = this.data.find(data => {
+            if(data.userID === id && data.date === date) {
+                return data;
+            }
         });
+        if(waterDrank !== undefined){
+            waterDrank = waterDrank.numOunces;
+        }
         return waterDrank;
     }
 
