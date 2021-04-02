@@ -54,11 +54,11 @@ describe('Sleep', function() {
     it('should return the average sleep quality for all users', function() {
         expect(sleep.allUserSleep()).to.equal(3);
     });
-    it.skip('should Find all users who average a sleep quality greater than 3 for a given week', function () {
-        expect(sleep.usersGoodSleep(user, "2019/06/21")).to.eql([])
+    it('should Find all users who average a sleep quality greater than 3 for a given week', function () {
+        expect(sleep.usersGoodSleep(user, "2019/06/21")).to.eql([2 ,3]);
     });
     it('should For a given day identified by the date, find the users who slept the most number of hours one or more if they tied', function() {
-        expect(sleep.userMostSleep("2019/06/21")).to.eql([4, 5]);
+        expect(sleep.userMostSleep("2019/06/21")).to.eql([3, 4]);
         expect(sleep.userMostSleep("2019/06/20")).to.eql([2]);
     });
 });
