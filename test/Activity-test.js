@@ -50,5 +50,20 @@ describe('Activity', function() {
     it('should return if a user passed their step goal for a given day', function() {
         expect(activity.passStepGoal(user, "2019/06/21")).to.equal(true);
         expect(activity.passStepGoal(user, "2019/06/18")).to.equal(false);
-    })
+    });
+    it('should return all days a user has exceeded their step goal', function() {
+        expect(activity.stepGoalsAllTime(user)).to.eql(["2019/06/17","2019/06/19","2019/06/20", "2019/06/21"])
+    });
+    it('should find the all-time stair climbing record for a user', function() {
+        expect(activity.allTimeStairs(user.id)).to.equal(44);
+    });
+    it('should return the average number of steps take for all user on a specific date', function() {
+        expect(activity.averageDay('numSteps', "2019/06/21")).to.equal(9073);
+    });
+    it('should return the average number of stairs climbed for all user on a specific date', function() {
+        expect(activity.averageDay('flightsOfStairs', "2019/06/21")).to.equal(23);
+    });
+    it('should return the average number of Active minutes for all user on a specific date', function() {
+        expect(activity.averageDay('minutesActive', "2019/06/21")).to.equal(163);
+    });
 });

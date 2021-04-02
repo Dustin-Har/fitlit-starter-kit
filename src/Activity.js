@@ -3,14 +3,14 @@ class Activity {
         this.data = data;
     }
 
-    dayInformation(id, date, dataType) {
+    dayInformation(id, date, activityType) {
         let userDay = this.data.find(data => {
             if(data.userID === id && data.date === date) {
                 return data;
             }
         });
         if(userDay !== undefined){
-            userDay = userDay[dataType];
+            userDay = userDay[activityType];
         }
         return userDay;
     }
@@ -43,6 +43,33 @@ class Activity {
     passStepGoal(user, date) {
         let stepsTaken = this.dayInformation(user.id, date, 'numSteps');
         return stepsTaken >= user.dailyStepGoal;
+    }
+
+    stepGoalsAllTime(user) {
+        let daysExceeded = this.data.filter(data => {
+            if(data.userID === user.id && data.numSteps >= user.dailyStepGoal){
+                return true;
+            }
+        });
+        return daysExceeded.map(data => data.date);  
+    }
+
+    allTimeStairs(id) {
+        let allTimeStairs = 0;
+        this.data.forEach(data => {
+            if(data.userID === id && data.flightsOfStairs > allTimeStairs){
+                allTimeStairs = data.flightsOfStairs;
+            }
+        });
+        return allTimeStairs;
+    }
+
+    averageDay(activityType, date) {
+        let day = this.data.filter(data => data.date === date);
+        day = day.map(data => data[activityType]);
+        const numPeople = day.length;
+        let sum = day.reduce((acc ,currentvalue) => acc + currentvalue);
+        return Math.round(sum / numPeople);
     }
 }
 
