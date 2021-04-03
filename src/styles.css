@@ -68,11 +68,26 @@ body {
     font-size: 2rem;
     color:  #8b93a7;
     display: flex;
-    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     background-color: #15171C;
     z-index: 20;
+}
+
+.header > p {
+    padding-right: 5%;
+}
+
+.cardio-box > section {
+    height: 20%;
+}
+
+.hydration-box > section {
+    height: 20%;
+}
+
+.sleep-box > section {
+    height: 20%;
 }
 
 .cardio-box,
@@ -91,7 +106,7 @@ body {
 .stairs-minutes,
 .steps,
 .miles-walked,
-.water-info,
+.water-chart,
 .daily-slept,
 .rank-night,
 .rank-average {
@@ -111,7 +126,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 20%;
 }
 
 .cardio-graphs {
@@ -146,8 +160,11 @@ body {
     transform-style: preserve-3d;
 }
 
-.stairs-graph:hover .stairs-info,
-.step-flights {
+.stairs-graph:hover .stairs-info {
+    transform: rotateX(180deg);
+}
+
+.steps-graph:hover .step-info {
     transform: rotateX(180deg);
 }
 
@@ -172,20 +189,25 @@ body {
 
 /*~~~~~~~~~ HYDRATION~~~~~~~~~*/
 
+.water-box {
+    padding-top: 2%;
+}
+
 .water-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30%;
 }
 
 .water-bar {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    height: 139%;
+
 }
 
 .water-chart {
@@ -194,30 +216,28 @@ body {
     align-items: center;
     bottom: -10%;
     z-index: -10;
+    width: 100%;
+    height: 100%
 }
 
 .water-bar-daily {
     display: flex;
     position: absolute;
-    bottom: -13.5%;
+    bottom: 13%;
 }
 
 .milk-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 75vw;
+    align-items: flex-end;
+    height: 6em;
 }
 
 .milk-container img {
-    height: 50%;
-    width: 50%;
-}
-
-.water-chart {
-    width: 100%;
     height: 100%;
+    width: 60%;
+    position: absolute;
+    bottom: 20%;
 }
 
 .water-info {
@@ -232,7 +252,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 30%;
 }
 
 .sleep-graphs {
@@ -245,6 +264,13 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     width: 50%;
+}
+
+.daily-slept {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .quality-night,
