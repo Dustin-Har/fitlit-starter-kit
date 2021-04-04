@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0" defer></script>
     <script type="text/javascript" src="./UserRepository.js" defer></script>
     <script type="text/javascript" src="./Hydration.js" defer></script>
+    <script type="text/javascript" src="./Activity.js" defer></script>
+    <script type="text/javascript" src="./Sleep.js" defer></script>
     <script type="text/javascript" src="./User.js" defer></script>
     <script type="text/javascript" src="./scripts.js" defer></script>
   </head>
@@ -34,17 +36,17 @@
       <section class="cardio-box" id="cardioBox">
         <span class="cardio-header" id="cardioHeader">
           <h2>CARDIO</h2>
-          <p>Step goal: 8,000 steps</p>
+          <p id="stepGoals">Step goal: 8,000 steps</p>
         </span>
         <section class="cardio-graphs" id="cardioGraphs">
           <section class="stairs-graph" id="stairsGraph">
             <canvas class="stairs-donut" id="stairsDonut" role="img"></canvas>
             <section class="stairs-info" id="stairsInfo">
               <section class="stairs-flights" id="stairsFlights">
-                <p># of flights</p>
+                <p id="numberOfFlights"># of flights</p>
               </section>
               <section class="stairs-minutes" id="stairsMinutes">
-                <p># of active miutes</p>
+                <p id="activeMinutes"># of active miutes</p>
               </section>
             </section>
           </section> 
@@ -52,10 +54,10 @@
             <canvas class="steps-donut" id="stepsDonut" role="img"></canvas>
             <section class="step-info" id="stepInfo">
               <section class="steps" id="steps">
-                <p># of steps</p>
+                <p id="numOfSteps"># of steps</p>
               </section>
               <section class="miles-walked" id="milesMalked">
-                <p># miles</p>
+                <p id="miles"># miles</p>
               </section>
             </section>
           </section>
@@ -95,7 +97,7 @@
           <section class="sleep-graph" id="sleepGraph">
             <canvas class="sleep-donut" id="sleepDonut" role="img"></canvas>
             <section class="daily-slept" id="dailySlept">
-              <p>8 hours</p>
+              <p id="hoursSlept">8 hours</p>
             </section>
           </section>
           <section class="sleep-info" id="sleepInfo">

@@ -28,6 +28,11 @@ class Activity {
         return Math.round((avgMin / 7) * 10) / 10;
     }
 
+    weekActivity(user, startingDate, activityType) {
+        let weekActive = this.findWeekOneUser(user, startingDate, user.id);
+        return weekActive.map(data => data[activityType]);
+    } 
+
     findWeekOneUser(user, startingDate, id) {
         let weekArray = user.setWeek(startingDate);
         let week = this.data.filter((data) => {
