@@ -7,7 +7,7 @@ side back ground: #424549 (hsl(214, 5%, 27%)), (top right);
 
 
 body {
-    background-color: hsl(223, 14%, 10%);
+    background-color: #16181d;
     margin: 0;
     width: 100vw;
     height: 100vh;
@@ -24,7 +24,7 @@ body {
     top: 0;
     bottom: 0;
     overflow: hidden;
-    
+    z-index: -10;
 }
 
 .color-section div {
@@ -71,11 +71,33 @@ body {
     justify-content: flex-end;
     align-items: center;
     background-color: #15171C;
-    z-index: 20;
+    z-index: 10;
+}
+
+.header-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1%;
+    cursor: pointer;
+
+}
+
+.header-name > img {
+    height: 5vh;
+    background: #8b93a7;
+    border-radius: 75%;
+    margin-right: 5px;
+}
+
+.user-info {
+    font-size: 1rem;
+    padding-right: 10px;
+    list-style-type: none;
 }
 
 .header > p {
-    padding-right: 5%;
+    padding-right: 8px;
 }
 
 .cardio-box > section {
@@ -102,15 +124,25 @@ body {
     align-content: center;
 }
 
+.cardio-header,
 .stairs-flights,
 .stairs-minutes,
 .steps,
-.miles-walked,
-.water-chart,
+.miles-walked {
+    background: linear-gradient(.25turn, #FD9346,#FDA766);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2em;
+    margin: 0;
+}
+
+.sleep-header,
 .daily-slept,
 .rank-night,
 .rank-average {
-    background: linear-gradient(.25turn, #4259C3, #7B9FF2);
+    background: linear-gradient(.25turn, #FFD400, #FFEA61);
     background-size: 100%;
     background-repeat: repeat;
     -webkit-background-clip: text;
@@ -126,6 +158,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 1em;
 }
 
 .cardio-graphs {
@@ -158,14 +191,6 @@ body {
     align-items: center;
     transition: transform 2s;
     transform-style: preserve-3d;
-}
-
-.stairs-graph:hover .stairs-info {
-    transform: rotateX(180deg);
-}
-
-.steps-graph:hover .step-info {
-    transform: rotateX(180deg);
 }
 
 .flip180 {
@@ -220,6 +245,16 @@ body {
     height: 100%
 }
 
+.water-header,
+.water-chart {
+    background: linear-gradient(.25turn, #4259C3, #7B9FF2);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
 .water-bar-daily {
     display: flex;
     position: absolute;
@@ -245,6 +280,7 @@ body {
     justify-content: center;
     align-items: center;
     padding-top: 30px;
+    font-size: 2em;
 }
 /*~~~~~~~~~ SLEEP ~~~~~~~~~*/
 
@@ -253,6 +289,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 1em;
 }
 
 .sleep-graphs {
@@ -297,11 +334,18 @@ body {
     .cardio-box,
     .water-box,
     .sleep-box {
-        width: 32vw;
+        width: 33.33vw;
         height: 100vh;
+        box-shadow: inset 0 0 2px #8b93a7;
     }
 
     .milk-container {
         width: 24vw;
     }
 } 
+
+/*~~~~~~~~~Hidden~~~~~~~~~*/
+
+.hidden {
+    display: none;
+}
