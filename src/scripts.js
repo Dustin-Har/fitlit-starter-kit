@@ -18,6 +18,11 @@ const waterDailyBar = document.getElementById('waterBarDaily').getContext('2d');
 const weeklyWaterBar = document.getElementById('waterBarWeekly').getContext('2d');
 const sleepDonut = document.getElementById('sleepDonut').getContext('2d');
 const sleepBar = document.getElementById('sleepBar').getContext('2d');
+const stairsInfo = document.getElementById('stairsInfo');
+const stepInfo = document.getElementById('stepInfo');
+const headerName = document.getElementById('headerName');
+const userInfo = document.getElementById('userInfo');
+
 
 let todaysDate = '2019/09/22';
 let userRepository = new UserRepository(userData);
@@ -25,17 +30,17 @@ let user = new User(userRepository.returnUser(4));
 let hydration = new Hydration(hydrationData);
 let activity = new Activity(activityData);
 let sleep = new Sleep(sleepData);
-userDisplayName.addEventListener('click', displayUserInformation);
+headerName.addEventListener('click', toggleInfo);
 
 let stairsChart = new Chart(stairsDonut, {
     type: 'doughnut',
-
+    
     data: {
         datasets: [{
             label: ['Stair CLimbed', 'Stairs tell goal'],
             data: [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))],
-            backgroundColor: ['purple', 'grey'],
-            borderColor: 'rgb(255, 99, 132)'
+            backgroundColor: ['#FD9346', '#16181d'],
+            borderColor: '#8b93a7'
         }]
     },
     options: {
@@ -44,13 +49,13 @@ let stairsChart = new Chart(stairsDonut, {
 
 let stepsChart = new Chart(stepsDonut, {
     type: 'doughnut',
-
+    
     data: {
         datasets: [{
             label: 'Stair CLimbed',
             data: [activity.dayInformation(user.id,todaysDate, "numSteps"), user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps")],
-            backgroundColor: ['red', 'grey'],
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: ['#FDA766', '#16181d'],
+            borderColor: '#8b93a7',
         }]
     },
     options: {
@@ -58,17 +63,17 @@ let stepsChart = new Chart(stepsDonut, {
 });
 let stepsWeeklyChart = new Chart(stepsBar, {
     type: 'bar',
-
+    
     data: {
         labels: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'],
         datasets: [{
             label: 'Weekly Daily Steps',
-            backgroundColor: 'lightblue',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#FDA766',
+            borderColor: '#FDA766',
             data: activity.weekActivity(user, todaysDate, 'numSteps')
         }]
     },
-
+    
     options: {
         scales: {
             y: {
@@ -81,7 +86,7 @@ let stepsWeeklyChart = new Chart(stepsBar, {
 });
 let waterDailyChart = new Chart(waterDailyBar, {
     type: 'bar',
-
+    
     data: {
         datasets: [{
             label: 'Daily Water Consumption',
@@ -95,7 +100,7 @@ let waterDailyChart = new Chart(waterDailyBar, {
         legend: {
             display: false
         }, 
-
+        
         scales: {
             yAxes: [{ticks:{display:false}}],
             xAxes: [{barPercentage: 0.7}]
@@ -104,29 +109,29 @@ let waterDailyChart = new Chart(waterDailyBar, {
 });
 let waterWeeklyChart = new Chart(weeklyWaterBar, {
     type: 'bar',
-
+    
     data: {
         labels: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'],
         datasets: [{
             label: 'Weekkly Water Consumption in Ounces',
             backgroundColor: 'lightblue',
-            borderColor: 'rgb(255, 99, 132)',
+            borderColor: 'lightblue',
             data: hydration.weekConsumption(user, todaysDate)
         }]
     },
-
+    
     options: {}
 });
 
 let sleepDailyChart = new Chart(sleepDonut, {
     type: 'doughnut',
-
+    
     data: {
         datasets: [{
             label: 'Hours Slept',
             data: [sleep.hourSleptDay(user.id, todaysDate), 8 - sleep.hourSleptDay(user.id, todaysDate)],
-            backgroundColor: ['white', 'grey'],
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: ['#FFDD3C', `#16181d`],
+            borderColor: '#8b93a7',
         }]
     },
     options: {
@@ -135,20 +140,21 @@ let sleepDailyChart = new Chart(sleepDonut, {
 
 let sleepWeeklyChart = new Chart(sleepBar, {
     type: 'bar',
-
+    
     data: {
         labels: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'],
         datasets: [{
             label: 'Weekkly Sleep In Hours',
-            backgroundColor: 'lightblue',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#FFDD3C',
+            borderColor: '#FFDD3C',
             data: sleep.weekSleepHours(user, todaysDate)
         }]
     },
-
+    
     options: {}
 });
 
+setInterval(flip, 6000);
 displayUserInformation();
 
 function displayUserInformation() {
@@ -204,8 +210,17 @@ function displaySleep() {
 
 function changeUserInformation() {
     userDisplayName.innerText = user.firstName();
-    userName.innerText = user.name;
-    userAddress.innerText = user.address;
-    userEmail.innerText = user.email;
-    userStride.innerText = user.strideLength;
+    userName.innerText = ` Name: ${user.name}`;
+    userAddress.innerText = `Address: ${user.address}`;
+    userEmail.innerText = `Email: ${user.email}`;
+    userStride.innerText = `Stride Length: ${user.strideLength}`;
+}
+
+function flip() {
+    stairsInfo.classList.toggle('flip180');
+    stepInfo.classList.toggle('flip180');
+}
+
+function toggleInfo () {
+    userInfo.classList.toggle('hidden');
 }
