@@ -22,6 +22,7 @@ const stairsInfo = document.getElementById('stairsInfo');
 const stepInfo = document.getElementById('stepInfo');
 const headerName = document.getElementById('headerName');
 const userInfo = document.getElementById('userInfo');
+const waterAmount = document.getElementById('waterAmount');
 
 
 let todaysDate = '2019/09/22';
@@ -36,6 +37,7 @@ let stairsChart = new Chart(stairsDonut, {
     type: 'doughnut',
     
     data: {
+        labels: ["Flights Climbed", "Tell Goal"],
         datasets: [{
             label: ['Stair CLimbed', 'Stairs tell goal'],
             data: [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))],
@@ -44,6 +46,9 @@ let stairsChart = new Chart(stairsDonut, {
         }]
     },
     options: {
+        legend: {
+            display: false
+        }
     }
 });
 
@@ -51,6 +56,7 @@ let stepsChart = new Chart(stepsDonut, {
     type: 'doughnut',
     
     data: {
+        labels: ["Steps", "Tell Goal"],
         datasets: [{
             label: 'Stair CLimbed',
             data: [activity.dayInformation(user.id,todaysDate, "numSteps"), user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps")],
@@ -59,6 +65,9 @@ let stepsChart = new Chart(stepsDonut, {
         }]
     },
     options: {
+        legend: {
+            display: false
+        }
     }
 });
 let stepsWeeklyChart = new Chart(stepsBar, {
@@ -125,8 +134,8 @@ let waterWeeklyChart = new Chart(weeklyWaterBar, {
 
 let sleepDailyChart = new Chart(sleepDonut, {
     type: 'doughnut',
-    
     data: {
+        labels: ["Hours Slept", "Tell Goal"],
         datasets: [{
             label: 'Hours Slept',
             data: [sleep.hourSleptDay(user.id, todaysDate), 8 - sleep.hourSleptDay(user.id, todaysDate)],
@@ -135,12 +144,14 @@ let sleepDailyChart = new Chart(sleepDonut, {
         }]
     },
     options: {
+        legend: {
+            display: false
+        }
     }
 });
 
 let sleepWeeklyChart = new Chart(sleepBar, {
     type: 'bar',
-    
     data: {
         labels: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'],
         datasets: [{
@@ -151,10 +162,12 @@ let sleepWeeklyChart = new Chart(sleepBar, {
         }]
     },
     
-    options: {}
+    options: {
+    }
 });
 
 setInterval(flip, 6000);
+setInterval(changeUser, 24000);
 displayUserInformation();
 
 function displayUserInformation() {
@@ -176,12 +189,21 @@ function displayActivity() {
 }
 
 function updateStairsChart() {
-    stairsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))];
+    if(100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs') >= 0 ){
+        stairsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))];
+    } else {
+        stairsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs')]
+    }
     stairsChart.update();
 }
 
 function updateStepsChart() {
-    stepsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, "numSteps"), user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps")];
+    if(user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps") >= 0){
+        stepsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, "numSteps"), user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps")];
+    }
+    else {
+        stepsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, "numSteps")]
+    }
     stepsChart.update();
 }
 
@@ -195,13 +217,18 @@ function displayHydration() {
     waterDailyChart.update();
     waterWeeklyChart.data.datasets[0].data = hydration.weekConsumption(user, todaysDate);
     waterWeeklyChart.update();
+    waterAmount.innerText = hydration.waterDayConsumed(user.id, todaysDate) + " ounces";
 }
 
 function displaySleep() {
     hoursSlept.innerText = sleep.hourSleptDay(user.id, todaysDate) + " hours";
     rankNight.innerText = sleep.sleepQualityDay(user.id, todaysDate);
     rankAverageSleep.innerText = sleep.averageQuality(user.id);
-    sleepDailyChart.data.datasets[0].data = [sleep.hourSleptDay(user.id, todaysDate), 8 - sleep.hourSleptDay(user.id, todaysDate)];
+    if(8 - sleep.hourSleptDay(user.id, todaysDate) >= 0){
+        sleepDailyChart.data.datasets[0].data = [sleep.hourSleptDay(user.id, todaysDate), 8 - sleep.hourSleptDay(user.id, todaysDate)];
+    } else {
+        sleepDailyChart.data.datasets[0].data = [sleep.hourSleptDay(user.id, todaysDate)]
+    }
     sleepDailyChart.update();
     sleepWeeklyChart.data.datasets[0].data = sleep.weekSleepHours(user, todaysDate);
     sleepWeeklyChart.update();
@@ -223,4 +250,13 @@ function flip() {
 
 function toggleInfo () {
     userInfo.classList.toggle('hidden');
+}
+
+function changeUser() {
+    const userId = user.id + 1;
+    if(userId === 50) {
+        userId = 1;
+    }
+    user.newUser(userRepository.returnUser(userId));
+    displayUserInformation();
 }
