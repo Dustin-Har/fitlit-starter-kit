@@ -97,7 +97,8 @@ let waterDailyChart = new Chart(waterDailyBar, {
         }, 
 
         scales: {
-            yAxes: [{ticks:{display:false}}]
+            yAxes: [{ticks:{display:false}}],
+            xAxes: [{barPercentage: 0.6}]
         }
     }
 });
@@ -148,10 +149,10 @@ let sleepWeeklyChart = new Chart(sleepBar, {
     options: {}
 });
 
-changeUserInformation();
 displayUserInformation();
 
 function displayUserInformation() {
+    changeUserInformation();
     displayActivity();
     displayHydration();
     displaySleep();
