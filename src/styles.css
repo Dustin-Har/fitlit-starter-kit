@@ -198,6 +198,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .water-bar {
@@ -233,7 +234,7 @@ body {
 }
 
 .milk-container img {
-    height: 80%;
+    height: 70%;
     width: 60%;
     position: absolute;
     bottom: 40%;
