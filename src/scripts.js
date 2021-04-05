@@ -25,13 +25,14 @@ let user = new User(userRepository.returnUser(4));
 let hydration = new Hydration(hydrationData);
 let activity = new Activity(activityData);
 let sleep = new Sleep(sleepData);
+userDisplayName.addEventListener('click', displayUserInformation);
 
 let stairsChart = new Chart(stairsDonut, {
     type: 'doughnut',
 
     data: {
         datasets: [{
-            label: 'Stair CLimbed',
+            label: ['Stair CLimbed', 'Stairs tell goal'],
             data: [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))],
             backgroundColor: ['purple', 'grey'],
             borderColor: 'rgb(255, 99, 132)'
@@ -158,10 +159,28 @@ function displayUserInformation() {
 
 function displayActivity() {
     stepGoals.innerText = `Step goal: ${user.dailyStepGoal} steps`
-    numberOfFlights.innerText = "# of flights " + activity.dayInformation(user.id, todaysDate, 'flightsOfStairs');
-    activeMinutes.innerText = "# of active Minutes " + activity.dayInformation(user.id, todaysDate, 'minutesActive');
-    numOfSteps.innerText = "# of steps " + activity.dayInformation(user.id, todaysDate, 'numSteps');
-    miles.innerText = "# of miles " + activity.milesWalked(user, todaysDate);
+    numberOfFlights.innerText = activity.dayInformation(user.id, todaysDate, 'flightsOfStairs') + " stairs";
+    activeMinutes.innerText = activity.dayInformation(user.id, todaysDate, 'minutesActive') + " minutes";
+    numOfSteps.innerText = activity.dayInformation(user.id, todaysDate, 'numSteps') + " steps";
+    miles.innerText = activity.milesWalked(user, todaysDate) + " miles";
+    updateStairsChart();
+    updateStepsChart();
+    updateWeekStepsChart();
+}
+
+function updateStairsChart() {
+    stairsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))];
+    stairsChart.update();
+}
+
+function updateStepsChart() {
+    stepsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, "numSteps"), user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps")];
+    stepsChart.update();
+}
+
+function updateWeekStepsChart() {
+    stepsWeeklyChart.data.datasets[0].data = activity.weekActivity(user, todaysDate, 'numSteps');
+    stepsWeeklyChart.update();
 }
 
 function displayHydration() {
@@ -175,6 +194,10 @@ function displaySleep() {
     hoursSlept.innerText = sleep.hourSleptDay(user.id, todaysDate) + " hours";
     rankNight.innerText = sleep.sleepQualityDay(user.id, todaysDate);
     rankAverageSleep.innerText = sleep.averageQuality(user.id);
+    sleepDailyChart.data.datasets[0].data = [sleep.hourSleptDay(user.id, todaysDate), 8 - sleep.hourSleptDay(user.id, todaysDate)];
+    sleepDailyChart.update();
+    sleepWeeklyChart.data.datasets[0].data = sleep.weekSleepHours(user, todaysDate);
+    sleepWeeklyChart.update();
 }
 
 
