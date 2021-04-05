@@ -1,10 +1,10 @@
-/*
+/* 
 main background color #15171C;
 side back ground: #424549 (hsl(214, 5%, 27%)), (top right);
                 #26363A (hsl(192, 21%, 19%)) (bottom left);
                 #26363A ( )(bottom right)
+ */
 
-*/
 
 body {
     background-color: hsl(223, 14%, 10%);
@@ -14,7 +14,7 @@ body {
 }
 
 /*~~~~~~~~~ background color ~~~~~~~~~*/
-/* .color-section {
+.color-section {
     margin: 0;
     position: fixed;
     width: 100vw;
@@ -56,7 +56,7 @@ body {
     background-color: #424549;
     right: -40%;
     bottom: 15%;
-} */
+}
 
 /*~~~~~~~~~ main screen ~~~~~~~~~*/
 
@@ -198,6 +198,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .water-bar {
@@ -207,7 +208,6 @@ body {
     justify-content: flex-end;
     align-items: center;
     height: 139%;
-
 }
 
 .water-chart {
@@ -223,7 +223,7 @@ body {
 .water-bar-daily {
     display: flex;
     position: absolute;
-    bottom: 13%;
+    bottom: 33%;
 }
 
 .milk-container {
@@ -234,16 +234,17 @@ body {
 }
 
 .milk-container img {
-    height: 100%;
+    height: 70%;
     width: 60%;
     position: absolute;
-    bottom: 20%;
+    bottom: 40%;
 }
 
 .water-info {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 30px;
 }
 /*~~~~~~~~~ SLEEP ~~~~~~~~~*/
 

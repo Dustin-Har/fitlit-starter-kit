@@ -66,4 +66,7 @@ describe('Activity', function() {
     it('should return the average number of Active minutes for all user on a specific date', function() {
         expect(activity.averageDay('minutesActive', "2019/06/21")).to.equal(163);
     });
+    it('should return how many steps a user took everyday over the course of a week', function() {
+        expect(activity.weekActivity(user, '2019/06/21', 'numSteps')).to.eql([4294, 4112, 13750, 4662, 9858, 8153, 10225]);
+    });
 });

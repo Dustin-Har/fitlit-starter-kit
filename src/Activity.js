@@ -23,10 +23,15 @@ class Activity {
 
     averageWeekActive(user, startingDate) {
         let weekActive = this.findWeekOneUser(user, startingDate, user.id);
-        weekActive = weekActive.map(data => data.minutesActive)
+        weekActive = weekActive.map(data => data.minutesActive);
         let avgMin = weekActive.reduce((acc, data) => acc + data);
         return Math.round((avgMin / 7) * 10) / 10;
     }
+
+    weekActivity(user, startingDate, activityType) {
+        let weekActive = this.findWeekOneUser(user, startingDate, user.id);
+        return weekActive.map(data => data[activityType]);
+    } 
 
     findWeekOneUser(user, startingDate, id) {
         let weekArray = user.setWeek(startingDate);

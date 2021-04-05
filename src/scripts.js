@@ -3,6 +3,14 @@ const userName = document.getElementById('userName');
 const userAddress = document.getElementById('userAddress');
 const userEmail = document.getElementById('userEmail');
 const userStride = document.getElementById('userStride');
+const numberOfFlights = document.getElementById('numberOfFlights');
+const activeMinutes = document.getElementById('activeMinutes');
+const numberOfStairs = document.getElementById('numOfSteps');
+const miles = document.getElementById('miles');
+const stepGoal = document.getElementById("stepGoal");
+const hoursSlept = document.getElementById('hoursSlept');
+const rankNight = document.getElementById('rankNight');
+const rankAverageSleep = document.getElementById('rankAverage');
 const stairsDonut = document.getElementById('stairsDonut').getContext('2d');
 const stepsDonut = document.getElementById('stepsDonut').getContext('2d');
 const stepsBar = document.getElementById('stepsBar').getContext('2d');
@@ -15,16 +23,19 @@ let todaysDate = '2019/09/22';
 let userRepository = new UserRepository(userData);
 let user = new User(userRepository.returnUser(4));
 let hydration = new Hydration(hydrationData);
+let activity = new Activity(activityData);
+let sleep = new Sleep(sleepData);
+userDisplayName.addEventListener('click', displayUserInformation);
 
 let stairsChart = new Chart(stairsDonut, {
     type: 'doughnut',
 
     data: {
         datasets: [{
-            label: 'Stair CLimbed',
-            backgroundColor: 'purple',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [25]
+            label: ['Stair CLimbed', 'Stairs tell goal'],
+            data: [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))],
+            backgroundColor: ['purple', 'grey'],
+            borderColor: 'rgb(255, 99, 132)'
         }]
     },
     options: {
@@ -37,9 +48,9 @@ let stepsChart = new Chart(stepsDonut, {
     data: {
         datasets: [{
             label: 'Stair CLimbed',
-            backgroundColor: 'red',
+            data: [activity.dayInformation(user.id,todaysDate, "numSteps"), user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps")],
+            backgroundColor: ['red', 'grey'],
             borderColor: 'rgb(255, 99, 132)',
-            data: [8000]
         }]
     },
     options: {
@@ -54,11 +65,19 @@ let stepsWeeklyChart = new Chart(stepsBar, {
             label: 'Weekly Daily Steps',
             backgroundColor: 'lightblue',
             borderColor: 'rgb(255, 99, 132)',
-            data: [6000, 5500, 4000, 8000, 7000, 3333, 10000]
+            data: activity.weekActivity(user, todaysDate, 'numSteps')
         }]
     },
 
-    options: {}
+    options: {
+        scales: {
+            y: {
+                suggestedMin: 500,
+                suggestedMax: 15000
+                
+            }
+        }
+    }
 });
 let waterDailyChart = new Chart(waterDailyBar, {
     type: 'bar',
@@ -68,7 +87,8 @@ let waterDailyChart = new Chart(waterDailyBar, {
             label: 'Daily Water Consumption',
             backgroundColor: 'lightblue',
             borderColor: 'rgb(255, 99, 132)',
-            data: [hydration.waterDayConsumed(user.id, todaysDate), 0 , 130]
+            data: [hydration.waterDayConsumed(user.id, todaysDate), 0 , 130],
+            
         }]
     },
     options: {
@@ -77,7 +97,8 @@ let waterDailyChart = new Chart(waterDailyBar, {
         }, 
 
         scales: {
-            yAxes: [{ticks:{display:false}}]
+            yAxes: [{ticks:{display:false}}],
+            xAxes: [{barPercentage: 0.7}]
         }
     }
 });
@@ -103,9 +124,9 @@ let sleepDailyChart = new Chart(sleepDonut, {
     data: {
         datasets: [{
             label: 'Hours Slept',
-            backgroundColor: 'white',
+            data: [sleep.hourSleptDay(user.id, todaysDate), 8 - sleep.hourSleptDay(user.id, todaysDate)],
+            backgroundColor: ['white', 'grey'],
             borderColor: 'rgb(255, 99, 132)',
-            data: [7.5]
         }]
     },
     options: {
@@ -121,23 +142,46 @@ let sleepWeeklyChart = new Chart(sleepBar, {
             label: 'Weekkly Sleep In Hours',
             backgroundColor: 'lightblue',
             borderColor: 'rgb(255, 99, 132)',
-            data: [6.5, 7.2, 8.6, 8, 7, 8, 7.8]
+            data: sleep.weekSleepHours(user, todaysDate)
         }]
     },
 
     options: {}
 });
 
-changeUserInformation();
 displayUserInformation();
 
 function displayUserInformation() {
-    displayStep();
+    changeUserInformation();
+    displayActivity();
     displayHydration();
+    displaySleep();
 }
 
-function displayStep() {
-    console.log(`${userRepository.averageStepGoal()} average step goal amongst user Your Goal ${user.dailyStepGoal}`);
+function displayActivity() {
+    stepGoals.innerText = `Step goal: ${user.dailyStepGoal} steps`
+    numberOfFlights.innerText = activity.dayInformation(user.id, todaysDate, 'flightsOfStairs') + " stairs";
+    activeMinutes.innerText = activity.dayInformation(user.id, todaysDate, 'minutesActive') + " minutes";
+    numOfSteps.innerText = activity.dayInformation(user.id, todaysDate, 'numSteps') + " steps";
+    miles.innerText = activity.milesWalked(user, todaysDate) + " miles";
+    updateStairsChart();
+    updateStepsChart();
+    updateWeekStepsChart();
+}
+
+function updateStairsChart() {
+    stairsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'), (100 - activity.dayInformation(user.id,todaysDate, 'flightsOfStairs'))];
+    stairsChart.update();
+}
+
+function updateStepsChart() {
+    stepsChart.data.datasets[0].data = [activity.dayInformation(user.id,todaysDate, "numSteps"), user.dailyStepGoal - activity.dayInformation(user.id,todaysDate, "numSteps")];
+    stepsChart.update();
+}
+
+function updateWeekStepsChart() {
+    stepsWeeklyChart.data.datasets[0].data = activity.weekActivity(user, todaysDate, 'numSteps');
+    stepsWeeklyChart.update();
 }
 
 function displayHydration() {
@@ -146,6 +190,17 @@ function displayHydration() {
     waterWeeklyChart.data.datasets[0].data = hydration.weekConsumption(user, todaysDate);
     waterWeeklyChart.update();
 }
+
+function displaySleep() {
+    hoursSlept.innerText = sleep.hourSleptDay(user.id, todaysDate) + " hours";
+    rankNight.innerText = sleep.sleepQualityDay(user.id, todaysDate);
+    rankAverageSleep.innerText = sleep.averageQuality(user.id);
+    sleepDailyChart.data.datasets[0].data = [sleep.hourSleptDay(user.id, todaysDate), 8 - sleep.hourSleptDay(user.id, todaysDate)];
+    sleepDailyChart.update();
+    sleepWeeklyChart.data.datasets[0].data = sleep.weekSleepHours(user, todaysDate);
+    sleepWeeklyChart.update();
+}
+
 
 function changeUserInformation() {
     userDisplayName.innerText = user.firstName();
