@@ -155,6 +155,7 @@ let sleepWeeklyChart = new Chart(sleepBar, {
 });
 
 setInterval(flip, 6000);
+setInterval(changeUser, 24000);
 displayUserInformation();
 
 function displayUserInformation() {
@@ -223,4 +224,13 @@ function flip() {
 
 function toggleInfo () {
     userInfo.classList.toggle('hidden');
+}
+
+function changeUser() {
+    const userId = user.id + 1;
+    if(userId === 50) {
+        userId = 1;
+    }
+    user.newUser(userRepository.returnUser(userId));
+    displayUserInformation();
 }
