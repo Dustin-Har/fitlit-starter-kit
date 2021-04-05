@@ -22,6 +22,7 @@ const stairsInfo = document.getElementById('stairsInfo');
 const stepInfo = document.getElementById('stepInfo');
 const headerName = document.getElementById('headerName');
 const userInfo = document.getElementById('userInfo');
+const waterAmount = document.getElementById('waterAmount');
 
 
 let todaysDate = '2019/09/22';
@@ -196,6 +197,7 @@ function displayHydration() {
     waterDailyChart.update();
     waterWeeklyChart.data.datasets[0].data = hydration.weekConsumption(user, todaysDate);
     waterWeeklyChart.update();
+    waterAmount.innerText = hydration.waterDayConsumed(user.id, todaysDate) + " ounces";
 }
 
 function displaySleep() {
