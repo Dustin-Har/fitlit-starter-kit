@@ -98,7 +98,7 @@ let waterDailyChart = new Chart(waterDailyBar, {
 
         scales: {
             yAxes: [{ticks:{display:false}}],
-            xAxes: [{barPercentage: 0.6}]
+            xAxes: [{barPercentage: 0.7}]
         }
     }
 });
