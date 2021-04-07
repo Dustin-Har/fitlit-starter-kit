@@ -46,6 +46,7 @@ let stairsChart = new Chart(stairsDonut, {
         }]
     },
     options: {
+        maintainAspectRatio: false,
         legend: {
             display: false
         }
@@ -65,6 +66,7 @@ let stepsChart = new Chart(stepsDonut, {
         }]
     },
     options: {
+        maintainAspectRatio: false,
         legend: {
             display: false
         }
@@ -129,7 +131,9 @@ let waterWeeklyChart = new Chart(weeklyWaterBar, {
         }]
     },
     
-    options: {}
+    options: {
+        maintainAspectRatio: false,
+    }
 });
 
 let sleepDailyChart = new Chart(sleepDonut, {
@@ -144,6 +148,7 @@ let sleepDailyChart = new Chart(sleepDonut, {
         }]
     },
     options: {
+        maintainAspectRatio: false,
         legend: {
             display: false
         }
@@ -253,7 +258,7 @@ function toggleInfo () {
 }
 
 function changeUser() {
-    const userId = user.id + 1;
+    let userId = user.id + 1;
     if(userId === 50) {
         userId = 1;
     }
