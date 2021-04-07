@@ -32,6 +32,6 @@
 
 ## Preview
 <p align="left">Dashboard</br>
- <img width="1000" height="500" src="./assets/dashBoardFitness.png">
+ <img width="1000" height="500" src=![Animated GIF-downsized_large](https://user-images.githubusercontent.com/75390410/113933556-bb7e5380-97c2-11eb-8627-d829d1a08429.gif)>
 </p>
 
