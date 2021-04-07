@@ -32,6 +32,6 @@
 
 ## Preview
 <p align="left">Dashboard</br>
- <img width="1000" height="500" src="">
+ <img width="1000" height="500" src="./assets/dashBoardFitness.png">
 </p>
 
