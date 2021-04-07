@@ -124,7 +124,7 @@ let waterWeeklyChart = new Chart(weeklyWaterBar, {
     data: {
         labels: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'],
         datasets: [{
-            label: 'Weekkly Water Consumption in Ounces',
+            label: 'Weekly Water Consumption in Ounces',
             backgroundColor: 'lightblue',
             borderColor: 'lightblue',
             data: hydration.weekConsumption(user, todaysDate)
@@ -160,7 +160,7 @@ let sleepWeeklyChart = new Chart(sleepBar, {
     data: {
         labels: ['Day1', 'Day2', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'],
         datasets: [{
-            label: 'Weekkly Sleep In Hours',
+            label: 'Weekly Sleep In Hours',
             backgroundColor: '#FFDD3C',
             borderColor: '#FFDD3C',
             data: sleep.weekSleepHours(user, todaysDate)
